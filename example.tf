@@ -50,11 +50,3 @@ output "instance_public_ip" {
   #finding output instance public ip
   value = aws_instance.example.public_ip
 }
-#provider "github" {
-  # create a Github repository and getting personal token in Github
- # token        = "ab542365312cd9e581eacaa77eba1ea705c692c2"
- # organization = "terraform-learning"
-
-#resource "github_repository" "terraform-learning-repo" {
-  #name        = "terraform-learning-repo"
-  #description = "My new repo for Terraform learning"
