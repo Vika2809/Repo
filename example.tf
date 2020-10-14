@@ -50,3 +50,7 @@ output "instance_public_ip" {
   #finding output instance public ip
   value = aws_instance.example.public_ip
 }
+resource "aws_s3_bucket" "buranbucket" {
+  bucket = "buranbucket"
+  acl = "private"
+}
