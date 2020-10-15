@@ -39,7 +39,7 @@ resource "aws_instance" "example" {
   ami           = data.aws_ami.ubuntu.image_id
   key_name      = aws_key_pair.vika.key_name
   instance_type = "t2.micro"
-  iam_instance_profile = "${aws_iam_instance_profile.ec2_profile.name}"
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 }
 
 resource "aws_key_pair" "vika" {
@@ -57,15 +57,15 @@ resource "aws_s3_bucket" "buranbucket" {
 }
 resource "aws_iam_role_policy" "ec2_policy" {
   name = "learning_ec2_policy"
-  role = "${aws_iam_role.buran-role.id}"
-  policy = "${file("ec2-policy1.json")}"
+  role = aws_iam_role.buran-role.id
+  policy = file("ec2-policy1.json")
 }
 
 resource "aws_iam_role" "buran-role" {
   name = "buran-role"
-  assume_role_policy = "${file("assume-role1.json")}"
+  assume_role_policy = file("assume-role1.json")
 }
 resource "aws_iam_instance_profile" "ec2_profile" {
   name = "learning_ec2_profile"
-  role = "${aws_iam_role.buran-role.name}"
+  role = aws_iam_role.buran-role.name
 }
